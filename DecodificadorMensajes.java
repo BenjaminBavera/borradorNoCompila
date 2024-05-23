@@ -68,8 +68,6 @@ public class DecodificadorMensajes
         }
         else {
             mensajeDecodificado = new Mensaje();
-            CodificadorMensajes c = new CodificadorMensajes(mensajeADecodificar);
-            c.codificarMensaje();
             for (int i = 0; i < mensajeADecodificar.cantLineas(); i++) {
                 String curr = mensajeADecodificar.obtenerLinea(i);
                 String currDecodificada = desencriptarCadena(curr, codigoEncripcion);

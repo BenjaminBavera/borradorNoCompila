@@ -227,4 +227,6 @@ public class Mensaje
         }
         return codigoAscii;
     }
+    
+    
 }
