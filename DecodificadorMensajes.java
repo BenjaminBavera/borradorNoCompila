@@ -58,8 +58,24 @@ public class DecodificadorMensajes
     public void decodificarMensaje() 
     {
         // TODO: Implementar este método
-        if (mensajeDecodificado == null)
-            throw new IllegalArgumentException ("El mensaje no debe estar codificado");
+        if (mensajeDecodificado != null) {
+            // mensaje ya codificado
+            throw new IllegalStateException("El mensaje ya está codificado");
+        }
+        if (mensajeADecodificar.cantLineas() == 0) {
+            mensajeDecodificado = new Mensaje();
+            codigoEncripcion = new int[0];
+        }
+        else {
+            mensajeDecodificado = new Mensaje();
+            CodificadorMensajes c = new CodificadorMensajes(mensajeADecodificar);
+            c.codificarMensaje();
+            for (int i = 0; i < mensajeADecodificar.cantLineas(); i++) {
+                String curr = mensajeADecodificar.obtenerLinea(i);
+                String currDecodificada = desencriptarCadena(curr, codigoEncripcion);
+                mensajeDecodificado.agregarLinea(currDecodificada);
+            }
+        }
     }
     
     /**
@@ -90,7 +106,17 @@ public class DecodificadorMensajes
     private String desencriptarCadena(String str, int[] codigo) {
         // TODO: Implementar este método, sustituyendo la línea
         // debajo con el código correspondiente a la funcionalidad
-        return null;
+        if (str == null) throw new IllegalArgumentException("Cadena nula");
+        if (codigo == null) throw new IllegalArgumentException("Código inválido");
+        String result = "";
+        int indiceCodigo = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char curr = str.charAt(i);
+            char currDesencriptado = (char) ((curr - codigo[indiceCodigo]) % 128);
+            result = result + currDesencriptado;
+            indiceCodigo = (indiceCodigo + 1) % (codigo.length);
+        }
+        return result;
     }
     
 }
