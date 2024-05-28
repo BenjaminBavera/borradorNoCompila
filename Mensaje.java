@@ -162,11 +162,7 @@ public class Mensaje
                 return false;
             }
         }   
-        if (igual == true){
-            return true;
-        }  else {
-            return false;
-        }
+        return igual;
     }
     
     /**

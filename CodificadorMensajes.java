@@ -126,8 +126,6 @@ public class CodificadorMensajes
      */
     private int[] generarCodigoEncripcion(String str) 
     {
-        // TODO: Implementar este método sustituyendo la línea
-        // debajo con el código de la funcionalidad.
         int[] codigoEncripcion = separarCifras(obtenerCodigoAscii(str) % 99991);      
         return codigoEncripcion;
     }
@@ -157,8 +155,15 @@ public class CodificadorMensajes
         return result;
     }
     
-    public int obtenerCodigoAscii(String str)
+    /**
+     * Obtiene el codigo Ascii de la cadena indicada.
+     * Precondición: str no puede ser null.  
+     * @param str es la cadena que queremos averiguar su codigo Ascii.
+     * @return la suma de los codigos Ascii de cada caracter de la cadena.
+     */
+    private int obtenerCodigoAscii(String str)
     {
+        if (str == null) throw new IllegalArgumentException("str no puede ser null");
         int codigoAscii = 0;
         int i = 0;
         while (i < str.length()){
@@ -168,7 +173,12 @@ public class CodificadorMensajes
         return codigoAscii;
     }
     
-    public int[] separarCifras(int num)
+    /**
+     * Separa las cifras de un numero indicado y lo retorna en un arreglo. 
+     * @param num es el numero al cual queremos separar sus cifras
+     * @return un arreglo de tipo int en el que cada posicion es una cifra del numero indicado.
+     */
+    private int[] separarCifras(int num)
     {
         Integer numero = Integer.valueOf(num); 
         String numString = numero.toString();
