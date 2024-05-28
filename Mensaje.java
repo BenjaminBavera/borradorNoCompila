@@ -143,25 +143,21 @@ public class Mensaje
      */
     public boolean equals(Mensaje otro)
     {
-        // TODO: Implementar este método sustituyendo la línea debajo, con el 
-        // código de la implementación
+        if (otro == null)
+            throw new IllegalArgumentException("otro no debe ser null.");
         int index = 0;
         boolean igual = true;
-        if (otro == null){
-            throw new IllegalArgumentException("otro no debe ser null.");
-        } else {
-            if (lineas.size() == otro.lineas.size()){
-                while (index < lineas.size() && igual){
-                    if (obtenerLinea(index) != otro.obtenerLinea(index)){
-                        igual = false;
-                    } else {
-                        index++;
-                    }
+        if (lineas.size() == otro.lineas.size()){
+            while (index < lineas.size() && igual){
+                if (!obtenerLinea(index).equals(otro.obtenerLinea(index))){
+                    igual = false;
+                } else {
+                    index++;
+                }
                 }
             } else {
                 return false;
-            }
-        }   
+            } 
         return igual;
     }
     
