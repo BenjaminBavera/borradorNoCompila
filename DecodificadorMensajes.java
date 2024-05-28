@@ -108,7 +108,7 @@ public class DecodificadorMensajes
         for (int i = 0; i < str.length(); i++) {
             char curr = str.charAt(i);
             if (curr - codigo[indiceCodigo] < 0){
-                char currDesencriptado = (char) (127 - codigo[indiceCodigo]);
+                char currDesencriptado = (char) (128 - (curr - codigo[indiceCodigo]));
             } else{           
                 char currDesencriptado = (char) ((curr - codigo[indiceCodigo]) % 128);
                 result = result + currDesencriptado;

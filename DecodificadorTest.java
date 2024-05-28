@@ -27,7 +27,24 @@ public class DecodificadorTest
         DecodificadorMensajes decodificador = new DecodificadorMensajes(mensajeCodificado, codigo);
         decodificador.decodificarMensaje();
         Mensaje mensajeDecodificado = decodificador.obtenerMensajeDecodificado();
-        assertTrue(mensaje.equals(mensajeDecodificado));
+        assertEquals(true, mensaje.equals(mensajeDecodificado));
+    }
+
+    @Test
+    public void decodificarHolaMundo()
+    {
+        Mensaje mensaje = new Mensaje();
+        mensaje.agregarLinea("hola");
+        mensaje.agregarLinea("mundo");
+        CodificadorMensajes codificador = new CodificadorMensajes(mensaje);
+        codificador.codificarMensaje();
+        Mensaje mensajeCodificado = codificador.obtenerMensajeCodificado();
+        int[] codigo = codificador.obtenerCodigoEncripcion();
+        DecodificadorMensajes decodificador = new DecodificadorMensajes(mensajeCodificado, codigo);
+        decodificador.decodificarMensaje();
+        Mensaje mensajeDecodificado = decodificador.obtenerMensajeDecodificado();
+        assertEquals(true, mensaje.equals(mensajeDecodificado));
     }
 }
+
 
