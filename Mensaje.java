@@ -195,30 +195,4 @@ public class Mensaje
             return ok;
         }
     }
-    
-    /*public int obtenerCodigoAscii()  MUCHO CUIDADO CON ESTO 
-    {
-        int codigoAscii = 0;
-        for (String linea : lineas){
-            int i = 0;
-            while (i < linea.length()){ 
-                codigoAscii = codigoAscii + linea.charAt(i);
-                i++;
-            }
-        }
-        return codigoAscii;
-    }
-    */
-    public int obtenerCodigoAscii(String str)
-    {
-        int codigoAscii = 0;
-        int i = 0;
-        while (i < str.length()){
-            codigoAscii = codigoAscii + str.charAt(i);
-            i++;
-        }
-        return codigoAscii;
-    }
-    
-    
 }
