@@ -15,7 +15,19 @@ public class codificadorTest
     
     
     @Test
-    public void testCodigoEncripcion()
+    public void testCodigoEncripcionHola()
+    {
+        Mensaje mensaje = new Mensaje();
+        mensaje.agregarLinea("hola");
+        CodificadorMensajes codificador = new CodificadorMensajes(mensaje);
+        codificador.codificarMensaje();
+        int[] codigo = codificador.obtenerCodigoEncripcion();
+        int[] arreglo420 = {4,2,0};
+        assertEquals(true, iguales(codigo,arreglo420));
+    }
+    
+    @Test
+    public void testCodigoEncripcionIguales()
     {
         Mensaje mensaje = new Mensaje();
         mensaje.agregarLinea("hola");
