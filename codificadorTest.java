@@ -23,39 +23,23 @@ public class codificadorTest
         codificador.codificarMensaje();
         int[] codigo = codificador.obtenerCodigoEncripcion();
         int[] arreglo420 = {4,2,0};
-        assertEquals(true, iguales(codigo,arreglo420));
+        assertArrayEquals(codigo,arreglo420);
     }
     
     @Test
     public void testCodigoEncripcionIguales()
     {
         Mensaje mensaje = new Mensaje();
-        mensaje.agregarLinea("hola");
+        mensaje.agregarLinea("hola mundo");
         CodificadorMensajes codificador = new CodificadorMensajes(mensaje);
         codificador.codificarMensaje();
         int[] codigo = codificador.obtenerCodigoEncripcion();
         Mensaje mensaje2 = new Mensaje();
-        mensaje2.agregarLinea("aloh");
+        mensaje2.agregarLinea("aloh odnum");
         codificador.cambiarMensaje(mensaje2);
         codificador.codificarMensaje();
         int[] codigo2 = codificador.obtenerCodigoEncripcion();
-        assertEquals(true, iguales(codigo,codigo2));
+        assertArrayEquals(codigo,codigo2);
     }
     
-    /**
-     * Comprueba si dos arreglos de enteros son iguales
-     */
-    private boolean iguales(int[] arr1, int[] arr2) {
-        if (arr1.length != arr2.length){
-            return false;
-        } else{
-            boolean iguales = true;
-            for (int i = 0; i < arr1.length && iguales; i++){
-                if (arr1[i] != arr2[i]){
-                    iguales = false;
-                }
-            } 
-            return iguales;
-        }
-    }
 }

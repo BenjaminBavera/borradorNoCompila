@@ -60,6 +60,3 @@ public class DecodificadorTest
         assertEquals(true, mensaje.equals(mensajeDecodificado));
     }
 }
-
-
-

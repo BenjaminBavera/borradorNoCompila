@@ -250,5 +250,5 @@ public class MensajeTest
         
         assertEquals("hola\nchau\n", result);
     }
-    
 }
+
